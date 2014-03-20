@@ -1,0 +1,25 @@
+{
+  "name": "isitshaking.com",
+  "version": "0.0.1-4",
+  "description": "isitshaking.com",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "express": "3.x",
+    "jade": "0.34.1",
+    "request": "2.27.0"
+  },
+  "subdomain": "iatecake-isitshaking.com",
+  "domains": [
+    "isitshaking.com",
+    "www.isitshaking.com"
+  ],
+  "engines": {
+    "node": "0.10.x"
+  }
+}
