@@ -153,7 +153,7 @@
           });
           if(hash && (hash.length === 2)){
             map.setCenter(new google.maps.LatLng(hash[0],hash[1]));
-            map.setZoom(8);
+            map.setZoom(14);
           }
         },
 
