@@ -11,7 +11,7 @@ app.configure(function(){
 });
 
 app.get('/get-json', function(req, res){
-  var url = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson';
+  var url = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson';
   request({url:url, json:true}, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(body);
