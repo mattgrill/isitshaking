@@ -53,22 +53,6 @@
           }),
           active_makers                 = [],
 
-        latlngToPoint                   = function(latlng) {
-          var normalizedPoint           = map.getProjection().fromLatLngToPoint(latlng),
-              scale                     = Math.pow(2,map.getZoom()),
-              pixelCoordinate           = new google.maps.Point(normalizedPoint.x * scale, normalizedPoint.y * scale);
-      
-          return pixelCoordinate; 
-        },
-
-        latlngToPoint                   = function(latlng) {
-          var normalizedPoint           = map.getProjection().fromLatLngToPoint(latlng),
-              scale                     = Math.pow(2,map.getZoom()),
-              pixelCoordinate           = new google.maps.Point(normalizedPoint.x * scale, normalizedPoint.y * scale);
-      
-          return pixelCoordinate; 
-        },
-
         make_infowindow                 = function(item, marker_color) {
           var list_date_time            = $('<p />',{html: '<b>Date/Time:</b> '+moment(item.time).format('llll')}),
               list_magnitude            = $('<p />',{html: '<b>Magnitude:</b> '+item.mag}),
