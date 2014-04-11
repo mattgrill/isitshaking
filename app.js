@@ -23,4 +23,8 @@ app.get('/', function(req, res){
   res.render('index', {});
 });
 
+app.get('/history/:year?', function(req, res){
+  res.render('history', {'pageData':{'year':req.params.year}});
+});
+
 app.listen(8080);
