@@ -1,10 +1,9 @@
-(function($){
-  $('document').ready(function(){
+;(function ($) {
+  $('document').ready(function () {
       var map_canvas                    = $('#map')[0],
           map_center                    = new google.maps.LatLng(32.98332409183747, -117.08404541015625),
           map_options                   = {
             zoom: 3,
-            mapTypeControl: true,
             center: map_center,
             disableDefaultUI: false,
             mapTypeControl: false,
@@ -16,19 +15,6 @@
             streetViewControl: false
           },
           map                           = new google.maps.Map(map_canvas, map_options),
-          quake_information             = $('#quake_information .content'),
-          active_location               = {
-            marker    : null,
-            toppos    : null,
-            leftpos   : null
-          },
-          marker_colors                 = {
-            'green'   : '#19664a',
-            'blue'    : '#487b86',
-            'yellow'  : '#af845a',
-            'red'     : '#b75654'
-          },
-          my_body                       = $('body'),
           overlay                       = new google.maps.OverlayView(),
           style                         = [
             {
@@ -63,16 +49,12 @@
               switch (archiveYear) {
                 case '2013':
                   return twentythirteen;
-                  break;
                 case '2012':
                   return twentytwelve;
-                  break;
                 case '2011':
                   return twentyeleven;
-                  break;
                 case '2010':
                   return twentyten;
-                  break;
                 default:
                   return twentythirteen;
               }

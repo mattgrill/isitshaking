@@ -1,10 +1,10 @@
-(function($){
+;(function($){
   $('document').ready(function(){
-      var map_canvas                    = $('#map')[0],
+      var hash                          = window.location.hash,
+          map_canvas                    = $('#map')[0],
           map_center                    = new google.maps.LatLng(32.98332409183747, -117.08404541015625),
           map_options                   = {
             zoom: 3,
-            mapTypeControl: true,
             center: map_center,
             disableDefaultUI: false,
             mapTypeControl: false,
@@ -16,7 +16,6 @@
             streetViewControl: false
           },
           map                           = new google.maps.Map(map_canvas, map_options),
-          quake_information             = $('#quake_information .content'),
           active_location               = {
             marker    : null,
             toppos    : null,
@@ -28,7 +27,6 @@
             'yellow'  : '#af845a',
             'red'     : '#b75654'
           },
-          my_body                       = $('body'),
           overlay                       = new google.maps.OverlayView(),
           style                         = [
             {
@@ -61,19 +59,17 @@
                 infowindow_content      = $('<div />',{'class': 'infowindow_content'});
                                               
                 infowindow_content.append(close_window,list_date_time,list_magnitude,list_region);
-            return infowindow_content
+            return infowindow_content;
           },
-          iterate_quakes                 = function(json_data, status) {
+          iterate_quakes                 = function(json_data) {
             if(window.location.hash){
-              var hash = window.location.hash;
-                  hash = hash.substring(1,hash.length);
-                  hash = hash.split(',');
-             }
+              hash = hash.substring(1,hash.length);
+              hash = hash.split(',');
+            }
             var earth_quakes = json_data.features;
             $.each(earth_quakes,function(index,value){
               var quake_properties      = value.properties,
                   quake_geometry        = value.geometry,
-                  quake_id              = value.id,
                   marker_location       = new google.maps.LatLng(quake_geometry.coordinates[1],quake_geometry.coordinates[0]),
                   marker                = new google.maps.Marker({
                     position  : marker_location,
@@ -83,11 +79,17 @@
                   marker_color          = marker_colors.red,
                   infowindow;
 
-              if (magnitude < 1 || magnitude >= 0.0 && magnitude <= 3.0) marker_color = marker_colors.green;
-              if (magnitude >= 3.1 && magnitude <= 4.0) marker_color = marker_colors.blue;
-              if (magnitude >= 4.1 && magnitude <= 5.0) marker_color = marker_colors.yellow;
+              if (magnitude < 1 || magnitude >= 0.0 && magnitude <= 3.0) {
+                marker_color = marker_colors.green;
+              }
+              if (magnitude >= 3.1 && magnitude <= 4.0) {
+                marker_color = marker_colors.blue;
+              }
+              if (magnitude >= 4.1 && magnitude <= 5.0) {
+                marker_color = marker_colors.yellow;
+              }
               
-              infowindow                = make_infowindow(quake_properties, marker_color)
+              infowindow                = make_infowindow(quake_properties, marker_color);
 
               marker.setIcon({
                 path: google.maps.SymbolPath.CIRCLE,
@@ -101,17 +103,18 @@
 
               google.maps.event.addListener(marker,'click',function() {
                 var infowindow_wrapper  = $('.infowindow_wrapper'),
-                    infowindow_content  = infowindow_wrapper.find('.infowindow_content'),
                     projection          = overlay.getProjection(),
                     p                   = projection.fromLatLngToContainerPixel(this.position),
                     infowindow_postop,
                     infowindow_posleft;
                 
-                if(active_location.marker != null) infowindow_wrapper.empty();
-                
+                if(active_location.marker !== null) {
+                  infowindow_wrapper.empty();
+                }
+
                 infowindow_wrapper.html(infowindow);
                 
-                infowindow_postop       = p.y-infowindow_wrapper.height()-25,
+                infowindow_postop       = p.y-infowindow_wrapper.height()-25;
                 infowindow_posleft      = p.x-110;
 
                 active_location.marker  = this;
@@ -143,7 +146,7 @@
           },
           get_quakes                    = function(){
             var jsonRequest             = request_helper();
-            if(active_makers.length != 0){
+            if(active_makers.length !== 0){
               $.each(active_makers,function(index,value){
                 value.setMap(null);
               });
@@ -165,7 +168,7 @@
       });
 
       google.maps.event.addListener(map,'idle',function(){
-        if(active_location.marker != null){
+        if(active_location.marker !== null){
           var infowindow_wrapper        = $('.infowindow_wrapper'),
               projection                = overlay.getProjection(),
               p                         = projection.fromLatLngToContainerPixel(active_location.marker.position),

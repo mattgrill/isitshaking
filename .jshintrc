@@ -1,0 +1,26 @@
+{
+  "browser": true,
+  "bitwise": true,
+  "devel": true,
+  "curly": true,
+  "eqeqeq": true,
+  "forin": true,
+  "immed": true,
+  "indent": 2,
+  "white": false,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "quotmark": true,
+  "regexp": true,
+  "undef": true,
+  "unused": true,
+  "trailing": true,
+  "smarttabs": true,
+  "globals": {
+    "jQuery": true,
+    "google": true,
+    "archiveYear": true,
+    "moment": true
+  }
+}

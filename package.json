@@ -1,6 +1,6 @@
 {
   "name": "isitshaking.com",
-  "version": "0.0.1-7",
+  "version": "0.0.1-8",
   "description": "isitshaking.com",
   "main": "app.js",
   "scripts": {
@@ -13,6 +13,13 @@
     "express": "3.x",
     "jade": "0.34.1",
     "request": "2.27.0"
+  },
+  "devDependencies": {
+    "grunt": "0.4.0",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-contrib-sass": "0.7.3",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-contrib-uglify": "0.4.0"
   },
   "subdomain": "iatecake-isitshaking.com",
   "domains": [
